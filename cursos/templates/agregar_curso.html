@@ -1,0 +1,22 @@
+<!-- templates/cursos/agregar_curso.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Curso</title>
+</head>
+<body>
+    <h2>Agregar Curso</h2>
+    
+    <form method="post" action="{% url 'agregar_curso' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Curso</button>
+    </form>
+    
+    <a href="{% url 'lista_cursos' %}">Volver a la Lista de Cursos</a>
+</body>
+</html>

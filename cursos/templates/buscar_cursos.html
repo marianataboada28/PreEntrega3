@@ -1,0 +1,31 @@
+<!-- templates/cursos/buscar_cursos.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Cursos</title>
+</head>
+<body>
+    <h2>Buscar Cursos</h2>
+    
+    <form method="post" action="{% url 'buscar_cursos' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if cursos %}
+        <h3>Resultados de la búsqueda:</h3>
+        <ul>
+            {% for curso in cursos %}
+                <li>{{ curso.nombre }} - {{ curso.descripcion }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <a href="{% url 'lista_cursos' %}">Volver a la Lista de Cursos</a>
+</body>
+</html>
